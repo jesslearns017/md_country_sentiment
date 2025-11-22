@@ -691,9 +691,3 @@ if __name__ == '__main__':
     
     # Use debug=False in production for security and performance
     app.run(debug=not is_production, host='0.0.0.0', port=port)
-
-
-
-
-
-
