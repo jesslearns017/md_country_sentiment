@@ -545,61 +545,96 @@ def get_recommendations():
 @app.route('/api/posts', methods=['GET'])
 def get_posts():
     """
-    Get social media posts - real or mock data
+    Get analyzed social media posts from real_data.json
     """
-    count = request.args.get('count', 20, type=int)
-    
-    # Try to load real data first
     try:
+        count = request.args.get('count', 20, type=int)
+        
+        # Load real data from JSON file
         with open('real_data.json', 'r') as f:
             import json
             all_posts = json.load(f)
             posts = all_posts[:count]
-            print(f"✅ Loaded {len(posts)} posts from real_data.json")
+        
+        # Analyze sentiment for each post using VADER
+        for post in posts:
+            if 'sentiment_score' not in post:
+                analysis = analyze_sentiment(post['text'])
+                post['sentiment_score'] = analysis['score']
+                post['sentiment'] = analysis['sentiment']
+        
+        return jsonify({
+            'posts': posts,
+            'total': len(posts)
+        })
+        
     except FileNotFoundError:
-        # Fall back to mock data if file doesn't exist
-        posts = generate_mock_posts(count)
-        print(f"ℹ️ Using mock data ({len(posts)} posts)")
-    
-    # Analyze each post
-    for post in posts:
-        if 'sentiment_score' not in post:
-            analysis = analyze_sentiment(post['text'])
-            post['sentiment_score'] = analysis['score']
-    
-    return jsonify({
-        'posts': posts,
-        'total': len(posts),
-        'data_source': 'real' if 'real_data.json' else 'mock'
-    })
+        return jsonify({
+            'error': 'real_data.json not found',
+            'posts': [],
+            'total': 0
+        }), 404
+    except Exception as e:
+        return jsonify({
+            'error': str(e),
+            'posts': [],
+            'total': 0
+        }), 500
 
 @app.route('/api/statistics', methods=['GET'])
 def get_statistics():
     """
-    Get overall sentiment statistics
+    Get overall sentiment statistics from real_data.json
     """
-    posts = generate_mock_posts(100)
-    
-    # Calculate statistics
-    sentiments = [p['sentiment'] for p in posts]
-    topics = [p['topic'] for p in posts]
-    
-    stats = {
-        'total_posts': len(posts),
-        'sentiment_breakdown': {
-            'positive': sentiments.count('positive'),
-            'negative': sentiments.count('negative'),
-            'neutral': sentiments.count('neutral')
-        },
-        'topic_breakdown': {},
-        'overall_sentiment_percentage': round((sentiments.count('positive') / len(posts)) * 100, 1)
-    }
-    
-    # Count topics
-    for topic in set(topics):
-        stats['topic_breakdown'][topic] = topics.count(topic)
-    
-    return jsonify(stats)
+    try:
+        # Load real data
+        with open('real_data.json', 'r') as f:
+            import json
+            posts = json.load(f)
+        
+        # Analyze sentiment for posts that don't have it
+        for post in posts:
+            if 'sentiment' not in post:
+                analysis = analyze_sentiment(post['text'])
+                post['sentiment'] = analysis['sentiment']
+        
+        # Calculate statistics
+        sentiments = [p.get('sentiment', 'neutral') for p in posts]
+        topics = [p.get('topic', 'general') for p in posts]
+        
+        stats = {
+            'total_posts': len(posts),
+            'sentiment_breakdown': {
+                'positive': sentiments.count('positive'),
+                'negative': sentiments.count('negative'),
+                'neutral': sentiments.count('neutral')
+            },
+            'topic_breakdown': {},
+            'overall_sentiment_percentage': round((sentiments.count('positive') / len(posts)) * 100, 1) if posts else 0
+        }
+        
+        # Count topics
+        for topic in set(topics):
+            stats['topic_breakdown'][topic] = topics.count(topic)
+        
+        return jsonify(stats)
+        
+    except FileNotFoundError:
+        return jsonify({
+            'error': 'real_data.json not found',
+            'total_posts': 0,
+            'sentiment_breakdown': {'positive': 0, 'negative': 0, 'neutral': 0},
+            'topic_breakdown': {},
+            'overall_sentiment_percentage': 0
+        }), 404
+    except Exception as e:
+        return jsonify({
+            'error': str(e),
+            'total_posts': 0,
+            'sentiment_breakdown': {'positive': 0, 'negative': 0, 'neutral': 0},
+            'topic_breakdown': {},
+            'overall_sentiment_percentage': 0
+        }), 500
 
 @app.route('/api/health', methods=['GET'])
 def health_check():
@@ -656,3 +691,9 @@ if __name__ == '__main__':
     
     # Use debug=False in production for security and performance
     app.run(debug=not is_production, host='0.0.0.0', port=port)
+
+
+
+
+
+
