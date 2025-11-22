@@ -3,7 +3,7 @@ Small Business Sentiment Intelligence Platform
 Backend API with AI/ML capabilities
 
 Features:
-- Sentiment analysis using TextBlob
+- Sentiment analysis using VADER (Valence Aware Dictionary and sEntiment Reasoner)
 - Topic extraction using keyword matching
 - Resource recommendation engine
 - Social media data simulation
@@ -11,7 +11,7 @@ Features:
 
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from textblob import TextBlob
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import re
 import os
 from datetime import datetime, timedelta
@@ -19,6 +19,9 @@ import random
 
 app = Flask(__name__)
 CORS(app)
+
+# Initialize VADER sentiment analyzer
+vader_analyzer = SentimentIntensityAnalyzer()
 
 # Expanded Resource Database with 12+ Categories
 RESOURCES = {
@@ -362,23 +365,32 @@ RESOURCES = {
 
 def analyze_sentiment(text):
     """
-    Analyze sentiment using TextBlob
+    Analyze sentiment using VADER (better for social media text!)
+    VADER understands emojis, slang, capitalization, and punctuation intensity
     Returns: sentiment score (-1 to 1) and classification
     """
-    blob = TextBlob(text)
-    polarity = blob.sentiment.polarity
+    # Get VADER scores
+    scores = vader_analyzer.polarity_scores(text)
     
-    if polarity > 0.1:
+    # VADER returns: neg, neu, pos, compound
+    # compound is the overall score (-1 to +1)
+    compound = scores['compound']
+    
+    # Classify based on compound score
+    # VADER recommended thresholds: >= 0.05 positive, <= -0.05 negative
+    if compound >= 0.05:
         sentiment = 'positive'
-    elif polarity < -0.1:
+    elif compound <= -0.05:
         sentiment = 'negative'
     else:
         sentiment = 'neutral'
     
     return {
-        'score': round(polarity, 2),
+        'score': round(compound, 2),
         'sentiment': sentiment,
-        'subjectivity': round(blob.sentiment.subjectivity, 2)
+        'positive': round(scores['pos'], 2),
+        'negative': round(scores['neg'], 2),
+        'neutral': round(scores['neu'], 2)
     }
 
 def extract_topics(text):
