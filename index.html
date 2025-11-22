@@ -18,238 +18,184 @@
             padding: 20px;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #0075C9 0%, #005a9c 100%);
-            color: white;
-            padding: 30px;
+        .main-header {
             text-align: center;
+            color: white;
+            margin-bottom: 30px;
         }
 
-        .header h1 {
-            font-size: 28px;
+        .main-header h1 {
+            font-size: 42px;
             margin-bottom: 10px;
         }
 
-        .header p {
-            opacity: 0.9;
-            font-size: 16px;
-        }
-
-        .county-badge {
-            background: rgba(255, 255, 255, 0.2);
+        .official-badge {
+            background: #6B8E23;
             display: inline-block;
-            padding: 6px 16px;
-            border-radius: 20px;
+            padding: 8px 20px;
+            border-radius: 25px;
             font-size: 14px;
+            font-weight: 700;
             margin-bottom: 15px;
-            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .chat-container {
-            height: 500px;
-            overflow-y: auto;
-            padding: 20px;
-            background: #f7fafc;
+        .main-subtitle {
+            font-size: 20px;
+            margin-top: 10px;
+            opacity: 0.95;
         }
 
-        .message {
-            margin-bottom: 15px;
-            display: flex;
-            gap: 10px;
-        }
-
-        .message.user {
-            flex-direction: row-reverse;
-        }
-
-        .message-bubble {
-            max-width: 70%;
-            padding: 12px 16px;
-            border-radius: 18px;
-            line-height: 1.4;
-        }
-
-        .message.bot .message-bubble {
+        .section {
             background: white;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .message.user .message-bubble {
-            background: #0075C9;
-            color: white;
-        }
-
-        .avatar {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
+        .section-header {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            flex-shrink: 0;
+            gap: 12px;
+            margin-bottom: 15px;
         }
 
-        .message.bot .avatar {
-            background: #0075C9;
+        .section-icon {
+            font-size: 32px;
         }
 
-        .message.user .avatar {
-            background: #6B8E23;
-        }
-
-        .resource-card {
-            background: #f7fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 12px;
-            margin-top: 8px;
-        }
-
-        .resource-card h4 {
+        .section-title {
+            font-size: 28px;
             color: #0075C9;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            color: #718096;
+            margin-bottom: 20px;
             font-size: 15px;
-            margin-bottom: 5px;
         }
 
-        .resource-card p {
-            color: #4a5568;
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-
-        .resource-link {
-            color: #0075C9;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        .resource-link:hover {
-            text-decoration: underline;
-        }
-
-        .quick-replies {
+        /* System Status Styles */
+        .button-group {
             display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 10px;
         }
 
-        .quick-reply-btn {
-            background: white;
-            border: 2px solid #0075C9;
-            color: #0075C9;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
+        .btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.2s;
-            font-weight: 600;
         }
 
-        .quick-reply-btn:hover {
+        .btn-primary {
             background: #0075C9;
             color: white;
         }
 
-        .input-container {
-            padding: 20px;
-            background: white;
-            border-top: 1px solid #e2e8f0;
-            display: flex;
-            gap: 10px;
+        .btn-primary:hover {
+            background: #005a9c;
+            transform: translateY(-2px);
         }
 
-        .input-box {
-            flex: 1;
-            padding: 12px 16px;
+        .btn-success {
+            background: #6B8E23;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #556b1d;
+            transform: translateY(-2px);
+        }
+
+        .status-result {
+            background: #f7fafc;
+            border-left: 4px solid #6B8E23;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .status-result pre {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #2d3748;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .success-badge {
+            color: #6B8E23;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Sentiment Analysis Styles */
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .text-input {
+            width: 100%;
+            padding: 15px;
             border: 2px solid #e2e8f0;
-            border-radius: 25px;
-            font-size: 15px;
+            border-radius: 10px;
+            font-size: 16px;
             font-family: inherit;
             transition: border-color 0.3s;
         }
 
-        .input-box:focus {
+        .text-input:focus {
             outline: none;
             border-color: #0075C9;
         }
 
-        .send-btn {
-            background: #0075C9;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-size: 15px;
+        .result-box {
+            background: #f7fafc;
+            border-left: 4px solid #6B8E23;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .result-item {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: start;
+            gap: 10px;
+        }
+
+        .result-icon {
+            font-size: 18px;
+        }
+
+        .result-text {
+            flex: 1;
+        }
+
+        .result-label {
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .send-btn:hover {
-            background: #005a9c;
-            transform: translateY(-1px);
-        }
-
-        .send-btn:active {
-            transform: translateY(0);
-        }
-
-        .typing-indicator {
-            display: none;
-            align-items: center;
-            gap: 5px;
-            padding: 10px 15px;
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 18px;
-            width: fit-content;
-        }
-
-        .typing-indicator span {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #cbd5e0;
-            animation: typing 1.4s infinite;
-        }
-
-        .typing-indicator span:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .typing-indicator span:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        @keyframes typing {
-            0%, 60%, 100% {
-                transform: translateY(0);
-            }
-            30% {
-                transform: translateY(-10px);
-            }
+            color: #2d3748;
         }
 
         .sentiment-badge {
             display: inline-block;
-            padding: 4px 10px;
+            padding: 4px 12px;
             border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-top: 5px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
         .sentiment-positive {
@@ -267,219 +213,604 @@
             color: #856404;
         }
 
-        @media (max-width: 600px) {
-            .header h1 {
-                font-size: 22px;
+        /* Social Media Dashboard Styles */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #0075C9 0%, #005a9c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            opacity: 0.95;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .posts-container {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .post {
+            background: #f7fafc;
+            padding: 18px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #e2e8f0;
+        }
+
+        .post.positive {
+            border-left-color: #6B8E23;
+            background: #f0f9eb;
+        }
+
+        .post.negative {
+            border-left-color: #c53030;
+            background: #fff5f5;
+        }
+
+        .post-text {
+            color: #2d3748;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .post-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 13px;
+            color: #718096;
+        }
+
+        .post-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Chatbot Styles */
+        .chat-interface {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 20px;
+            max-height: 500px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
+        .chat-message {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .chat-message.user {
+            flex-direction: row-reverse;
+        }
+
+        .chat-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .chat-message.bot .chat-avatar {
+            background: #0075C9;
+        }
+
+        .chat-message.user .chat-avatar {
+            background: #6B8E23;
+        }
+
+        .chat-bubble {
+            max-width: 70%;
+            padding: 14px 18px;
+            border-radius: 18px;
+            line-height: 1.5;
+        }
+
+        .chat-message.bot .chat-bubble {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .chat-message.user .chat-bubble {
+            background: #0075C9;
+            color: white;
+        }
+
+        .quick-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .quick-btn {
+            background: white;
+            border: 2px solid #0075C9;
+            color: #0075C9;
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 600;
+        }
+
+        .quick-btn:hover {
+            background: #0075C9;
+            color: white;
+        }
+
+        .chat-input-container {
+            display: flex;
+            gap: 12px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 14px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 30px;
+            font-size: 15px;
+            font-family: inherit;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: #0075C9;
+        }
+
+        .send-btn {
+            background: #0075C9;
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .send-btn:hover {
+            background: #005a9c;
+            transform: scale(1.05);
+        }
+
+        .resource-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 10px;
+        }
+
+        .resource-card h4 {
+            color: #0075C9;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .resource-card p {
+            color: #4a5568;
+            font-size: 14px;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .resource-link {
+            color: #0075C9;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .resource-link:hover {
+            text-decoration: underline;
+        }
+
+        .relevance-badge {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .main-header h1 {
+                font-size: 28px;
             }
 
-            .chat-container {
-                height: 400px;
+            .stats-grid {
+                grid-template-columns: 1fr;
             }
 
-            .message-bubble {
+            .chat-bubble {
                 max-width: 85%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="county-badge">Miami-Dade County</div>
-            <h1>🏢 Small Business Sentiment Intelligence</h1>
-            <p>AI-powered resource recommendations for Miami-Dade entrepreneurs</p>
-        </div>
+    <div class="main-header">
+        <h1>🏛️ Miami-Dade County</h1>
+        <div class="official-badge">OFFICIAL DEMO</div>
+        <h2 class="main-subtitle">Small Business Sentiment Intelligence</h2>
+        <p style="opacity: 0.9; margin-top: 8px;">AI-Powered Platform for Business Support & Analysis</p>
+    </div>
 
-        <div class="chat-container" id="chatContainer">
-            <div class="message bot">
-                <div class="avatar">🤖</div>
-                <div class="message-bubble">
-                    <p>Hello! I'm your Miami-Dade County business assistant. I can help you find resources for permits, funding, training, legal services, and more!</p>
-                    <p style="margin-top: 10px;">Click a topic below or type your question:</p>
-                    <div class="quick-replies">
-                        <button class="quick-reply-btn" onclick="sendQuickReply('I need help with permits')">📋 Permits</button>
-                        <button class="quick-reply-btn" onclick="sendQuickReply('I need funding for my business')">💰 Funding</button>
-                        <button class="quick-reply-btn" onclick="sendQuickReply('I want training programs')">📚 Training</button>
-                        <button class="quick-reply-btn" onclick="sendQuickReply('I need help with taxes')">💵 Taxes</button>
-                        <button class="quick-reply-btn" onclick="sendQuickReply('I need legal assistance')">⚖️ Legal</button>
-                        <button class="quick-reply-btn" onclick="sendQuickReply('I need business insurance')">🛡️ Insurance</button>
-                        <button class="quick-reply-btn" onclick="sendQuickReply('I need marketing help')">📢 Marketing</button>
-                        <button class="quick-reply-btn" onclick="sendQuickReply('I need office space')">🏢 Real Estate</button>
+    <!-- System Status Section -->
+    <div class="section">
+        <div class="section-header">
+            <span class="section-icon">📡</span>
+            <h2 class="section-title">System Status</h2>
+        </div>
+        <div class="button-group">
+            <button class="btn btn-primary" onclick="checkAPIHealth()">Check API Health</button>
+            <button class="btn btn-success" onclick="getStatistics()">Get Statistics</button>
+        </div>
+        <div id="statusResult"></div>
+    </div>
+
+    <!-- AI Sentiment Analysis Section -->
+    <div class="section">
+        <div class="section-header">
+            <span class="section-icon">🧠</span>
+            <h2 class="section-title">AI Sentiment Analysis</h2>
+        </div>
+        <p class="section-subtitle">Test the natural language processing capabilities</p>
+        <div class="input-group">
+            <input type="text" 
+                   class="text-input" 
+                   id="sentimentInput" 
+                   value="Just got my business license approved! The online portal made it so easy."
+                   placeholder="Enter text to analyze...">
+        </div>
+        <button class="btn btn-primary" onclick="analyzeSentiment()">Analyze Sentiment</button>
+        <div id="sentimentResult"></div>
+    </div>
+
+    <!-- Social Media Dashboard Section -->
+    <div class="section">
+        <div class="section-header">
+            <span class="section-icon">📊</span>
+            <h2 class="section-title">Social Media Analysis Dashboard</h2>
+        </div>
+        <p class="section-subtitle">Real-time sentiment tracking from small business owners</p>
+        <button class="btn btn-primary" onclick="loadPosts()">Load Recent Posts</button>
+        <div id="statsGrid"></div>
+        <div id="postsContainer"></div>
+    </div>
+
+    <!-- AI Assistant Chatbot Section -->
+    <div class="section">
+        <div class="section-header">
+            <span class="section-icon">💬</span>
+            <h2 class="section-title">Ask Our AI Assistant</h2>
+        </div>
+        <p class="section-subtitle">Get personalized help and resource recommendations</p>
+        
+        <div class="chat-interface" id="chatInterface">
+            <div class="chat-message bot">
+                <div class="chat-avatar">🤖</div>
+                <div class="chat-bubble">
+                    <p>Hello! I'm your Miami-Dade County business assistant. Ask me about permits, funding, training, legal services, and more!</p>
+                    <div class="quick-buttons">
+                        <button class="quick-btn" onclick="sendQuickQuery('📋 Permits')">📋 Permits</button>
+                        <button class="quick-btn" onclick="sendQuickQuery('💰 Funding')">💰 Funding</button>
+                        <button class="quick-btn" onclick="sendQuickQuery('📚 Training')">📚 Training</button>
+                        <button class="quick-btn" onclick="sendQuickQuery('💵 Taxes')">💵 Taxes</button>
+                        <button class="quick-btn" onclick="sendQuickQuery('⚖️ Legal')">⚖️ Legal</button>
+                        <button class="quick-btn" onclick="sendQuickQuery('🛡️ Insurance')">🛡️ Insurance</button>
+                        <button class="quick-btn" onclick="sendQuickQuery('📢 Marketing')">📢 Marketing</button>
+                        <button class="quick-btn" onclick="sendQuickQuery('🏢 Real Estate')">🏢 Real Estate</button>
                     </div>
                 </div>
             </div>
-
-            <div class="message bot" style="display: none;" id="typingIndicator">
-                <div class="avatar">🤖</div>
-                <div class="typing-indicator">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
         </div>
 
-        <div class="input-container">
+        <div class="chat-input-container">
             <input type="text" 
-                   class="input-box" 
-                   id="userInput" 
-                   placeholder="Type your question here..."
-                   onkeypress="handleKeyPress(event)">
-            <button class="send-btn" onclick="sendMessage()">Send</button>
+                   class="chat-input" 
+                   id="chatInput" 
+                   placeholder="Type your message here..."
+                   onkeypress="handleChatKeyPress(event)">
+            <button class="send-btn" onclick="sendChatMessage()">Send 📨</button>
         </div>
     </div>
 
     <script>
         const API_URL = 'https://md-county-sentiment.onrender.com';
 
-        function addMessage(text, isUser = false) {
-            const chatContainer = document.getElementById('chatContainer');
+        // System Status Functions
+        async function checkAPIHealth() {
+            const resultDiv = document.getElementById('statusResult');
+            resultDiv.innerHTML = '<div class="status-result"><p>Loading...</p></div>';
+            
+            try {
+                const response = await fetch(`${API_URL}/api/health`);
+                const data = await response.json();
+                
+                resultDiv.innerHTML = `
+                    <div class="status-result">
+                        <div class="success-badge">✅ Success!</div>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    </div>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="status-result" style="border-left-color: #c53030;"><p style="color: #c53030;">❌ Error: ${error.message}</p></div>`;
+            }
+        }
+
+        async function getStatistics() {
+            const resultDiv = document.getElementById('statusResult');
+            resultDiv.innerHTML = '<div class="status-result"><p>Loading...</p></div>';
+            
+            try {
+                const response = await fetch(`${API_URL}/api/statistics`);
+                const data = await response.json();
+                
+                resultDiv.innerHTML = `
+                    <div class="status-result">
+                        <div class="success-badge">✅ Success!</div>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    </div>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="status-result" style="border-left-color: #c53030;"><p style="color: #c53030;">❌ Error: ${error.message}</p></div>`;
+            }
+        }
+
+        // Sentiment Analysis Function
+        async function analyzeSentiment() {
+            const input = document.getElementById('sentimentInput').value;
+            const resultDiv = document.getElementById('sentimentResult');
+            
+            if (!input.trim()) {
+                alert('Please enter some text to analyze');
+                return;
+            }
+
+            resultDiv.innerHTML = '<div class="result-box"><p>Analyzing...</p></div>';
+
+            try {
+                const response = await fetch(`${API_URL}/api/analyze`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: input })
+                });
+
+                const data = await response.json();
+                const sentiment = data.sentiment;
+                const positive = (sentiment.positive * 100).toFixed(0);
+                const negative = (sentiment.negative * 100).toFixed(0);
+                const neutral = (sentiment.neutral * 100).toFixed(0);
+
+                resultDiv.innerHTML = `
+                    <div class="result-box">
+                        <div class="success-badge">✅ Success!</div>
+                        <div class="result-item">
+                            <span class="result-icon">📝</span>
+                            <span class="result-text"><strong>Text:</strong> "${data.text}"</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-icon">😊</span>
+                            <span class="result-text">
+                                <strong>Sentiment:</strong> 
+                                <span class="sentiment-badge sentiment-${sentiment.sentiment}">${sentiment.sentiment}</span>
+                            </span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-icon">📊</span>
+                            <span class="result-text"><strong>Score:</strong> ${sentiment.score} (Range: -1 to +1)</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-icon">📈</span>
+                            <span class="result-text">
+                                <strong>VADER Breakdown:</strong><br>
+                                Positive: ${positive}% | Negative: ${negative}% | Neutral: ${neutral}%
+                            </span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-icon">🏷️</span>
+                            <span class="result-text"><strong>Detected Topics:</strong> ${data.topics.join(', ')}</span>
+                        </div>
+                    </div>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="result-box" style="border-left-color: #c53030;"><p style="color: #c53030;">❌ Error: ${error.message}</p></div>`;
+            }
+        }
+
+        // Social Media Dashboard Functions
+        async function loadPosts() {
+            const statsDiv = document.getElementById('statsGrid');
+            const postsDiv = document.getElementById('postsContainer');
+            
+            statsDiv.innerHTML = '<p>Loading statistics...</p>';
+            postsDiv.innerHTML = '<p>Loading posts...</p>';
+
+            try {
+                const response = await fetch(`${API_URL}/api/posts?count=10`);
+                const data = await response.json();
+                const posts = data.posts;
+
+                // Calculate stats
+                const positive = posts.filter(p => p.sentiment === 'positive').length;
+                const negative = posts.filter(p => p.sentiment === 'negative').length;
+                const satisfaction = ((positive / posts.length) * 100).toFixed(0);
+
+                // Display stats
+                statsDiv.innerHTML = `
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">${positive}</div>
+                            <div class="stat-label">😊 Positive Posts</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${negative}</div>
+                            <div class="stat-label">😞 Negative Posts</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${satisfaction}%</div>
+                            <div class="stat-label">Satisfaction Rate</div>
+                        </div>
+                    </div>
+                `;
+
+                // Display posts
+                let postsHTML = '<div class="posts-container">';
+                posts.forEach(post => {
+                    const sentimentClass = post.sentiment || 'neutral';
+                    const sentimentBadge = post.sentiment ? 
+                        `<span class="sentiment-badge sentiment-${post.sentiment}">${post.sentiment.toUpperCase()}</span>` : '';
+                    
+                    postsHTML += `
+                        <div class="post ${sentimentClass}">
+                            <div class="post-text">${post.text}</div>
+                            <div class="post-meta">
+                                ${sentimentBadge}
+                                <span class="post-meta-item">📋 ${post.topic}</span>
+                                <span class="post-meta-item">📅 ${post.timestamp ? new Date(post.timestamp).toLocaleDateString() : 'Recent'}</span>
+                                <span class="post-meta-item">📱 ${post.source || 'social media'}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+                postsHTML += '</div>';
+                postsDiv.innerHTML = postsHTML;
+
+            } catch (error) {
+                statsDiv.innerHTML = `<p style="color: #c53030;">❌ Error loading data: ${error.message}</p>`;
+                postsDiv.innerHTML = '';
+            }
+        }
+
+        // Chatbot Functions
+        function addChatMessage(content, isUser = false) {
+            const chatInterface = document.getElementById('chatInterface');
             const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
+            messageDiv.className = `chat-message ${isUser ? 'user' : 'bot'}`;
 
             const avatar = document.createElement('div');
-            avatar.className = 'avatar';
+            avatar.className = 'chat-avatar';
             avatar.textContent = isUser ? '👤' : '🤖';
 
             const bubble = document.createElement('div');
-            bubble.className = 'message-bubble';
+            bubble.className = 'chat-bubble';
             
-            if (typeof text === 'string') {
-                bubble.innerHTML = `<p>${text}</p>`;
+            if (typeof content === 'string') {
+                bubble.innerHTML = `<p>${content}</p>`;
             } else {
-                bubble.appendChild(text);
+                bubble.appendChild(content);
             }
 
             messageDiv.appendChild(avatar);
             messageDiv.appendChild(bubble);
-            chatContainer.appendChild(messageDiv);
-
-            document.getElementById('typingIndicator').style.display = 'none';
-            chatContainer.scrollTop = chatContainer.scrollHeight;
+            chatInterface.appendChild(messageDiv);
+            chatInterface.scrollTop = chatInterface.scrollHeight;
         }
 
-        function showTypingIndicator() {
-            const typingIndicator = document.getElementById('typingIndicator');
-            typingIndicator.style.display = 'flex';
-            const chatContainer = document.getElementById('chatContainer');
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-        }
-
-        function createResourceCard(resource) {
-            const card = document.createElement('div');
-            card.className = 'resource-card';
-            card.innerHTML = `
-                <h4>${resource.name}</h4>
-                <p>${resource.description}</p>
-                <a href="${resource.url}" target="_blank" class="resource-link">Learn More →</a>
-            `;
-            return card;
-        }
-
-        function getSentimentEmoji(sentiment) {
-            const emojiMap = {
-                'positive': '😊',
-                'negative': '😟',
-                'neutral': '😐'
-            };
-            return emojiMap[sentiment] || '😐';
-        }
-
-        async function sendMessage() {
-            const input = document.getElementById('userInput');
+        async function sendChatMessage() {
+            const input = document.getElementById('chatInput');
             const query = input.value.trim();
 
             if (!query) return;
 
-            addMessage(query, true);
+            addChatMessage(query, true);
             input.value = '';
-            showTypingIndicator();
 
             try {
                 const response = await fetch(`${API_URL}/api/recommend`, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ query: query })
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ query })
                 });
-
-                if (!response.ok) {
-                    throw new Error('API request failed');
-                }
 
                 const data = await response.json();
                 const responseContainer = document.createElement('div');
-                
-                const sentiment = data.sentiment.sentiment;
-                const sentimentScore = data.sentiment.score;
-                const positive = data.sentiment.positive || 0;
-                const negative = data.sentiment.negative || 0;
-                const neutral = data.sentiment.neutral || 0;
-                const sentimentEmoji = getSentimentEmoji(sentiment);
-                
-                const sentimentText = document.createElement('p');
-                sentimentText.innerHTML = `
-                    ${sentimentEmoji} Sentiment: <span class="sentiment-badge sentiment-${sentiment}">${sentiment.toUpperCase()}</span> 
-                    (Score: ${sentimentScore})
-                `;
-                responseContainer.appendChild(sentimentText);
-                
-                const breakdownText = document.createElement('p');
-                breakdownText.innerHTML = `
-                    <small style="color: #718096;">
-                        📊 Positive: ${(positive * 100).toFixed(0)}% | 
-                        Negative: ${(negative * 100).toFixed(0)}% | 
-                        Neutral: ${(neutral * 100).toFixed(0)}%
-                    </small>
-                `;
-                breakdownText.style.marginTop = '5px';
-                responseContainer.appendChild(breakdownText);
 
+                // Sentiment
+                const sentiment = data.sentiment;
+                const positive = (sentiment.positive * 100).toFixed(0);
+                const negative = (sentiment.negative * 100).toFixed(0);
+                const neutral = (sentiment.neutral * 100).toFixed(0);
+
+                responseContainer.innerHTML = `
+                    <p><strong>Sentiment:</strong> <span class="sentiment-badge sentiment-${sentiment.sentiment}">${sentiment.sentiment.toUpperCase()}</span> (${sentiment.score})</p>
+                    <p style="margin-top: 5px; font-size: 14px; color: #718096;">📊 Positive: ${positive}% | Negative: ${negative}% | Neutral: ${neutral}%</p>
+                `;
+
+                // Topics
                 if (data.topics && data.topics.length > 0) {
-                    const topicsText = document.createElement('p');
-                    topicsText.innerHTML = `<strong>Topics detected:</strong> ${data.topics.join(', ')}`;
-                    topicsText.style.marginTop = '10px';
-                    responseContainer.appendChild(topicsText);
+                    const topicsP = document.createElement('p');
+                    topicsP.innerHTML = `<strong style="margin-top: 10px; display: inline-block;">Topics:</strong> ${data.topics.join(', ')}`;
+                    responseContainer.appendChild(topicsP);
                 }
 
+                // Resources
                 if (data.recommendations && data.recommendations.length > 0) {
-                    const recsText = document.createElement('p');
-                    recsText.innerHTML = '<strong>Here are some resources that might help:</strong>';
-                    recsText.style.marginTop = '15px';
-                    recsText.style.marginBottom = '10px';
-                    responseContainer.appendChild(recsText);
+                    const recsTitle = document.createElement('p');
+                    recsTitle.innerHTML = '<strong style="margin-top: 15px; display: inline-block;">Resources:</strong>';
+                    responseContainer.appendChild(recsTitle);
 
                     data.recommendations.slice(0, 3).forEach(resource => {
-                        responseContainer.appendChild(createResourceCard(resource));
+                        const card = document.createElement('div');
+                        card.className = 'resource-card';
+                        card.innerHTML = `
+                            <h4>${resource.name} <span class="relevance-badge">Relevance: ${resource.relevance_score || 'High'}</span></h4>
+                            <p>${resource.description}</p>
+                            <a href="${resource.url}" target="_blank" class="resource-link">Learn More →</a>
+                        `;
+                        responseContainer.appendChild(card);
                     });
-                } else {
-                    const noRecsText = document.createElement('p');
-                    noRecsText.innerHTML = 'I found some information about your query, but don\'t have specific resources to recommend. Try being more specific or click one of the topic buttons above!';
-                    noRecsText.style.marginTop = '10px';
-                    responseContainer.appendChild(noRecsText);
                 }
 
-                addMessage(responseContainer);
+                addChatMessage(responseContainer);
 
             } catch (error) {
-                console.error('Error:', error);
-                addMessage('Sorry, I encountered an error. Please try again or contact support.');
+                addChatMessage('Sorry, I encountered an error. Please try again.');
             }
         }
 
-        function sendQuickReply(text) {
-            document.getElementById('userInput').value = text;
-            sendMessage();
+        function sendQuickQuery(topic) {
+            document.getElementById('chatInput').value = `I need help with ${topic}`;
+            sendChatMessage();
         }
 
-        function handleKeyPress(event) {
+        function handleChatKeyPress(event) {
             if (event.key === 'Enter') {
-                sendMessage();
+                sendChatMessage();
             }
         }
-
-        document.getElementById('userInput').focus();
     </script>
 </body>
 </html>
